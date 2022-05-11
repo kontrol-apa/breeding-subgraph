@@ -1,0 +1,32 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: HopperNFT
+    network: fuji
+    source:
+      address: "0x53c52ca94d447e5c29b93dbb9edf40115466effb"
+      abi: HopperNFT
+      startBlock : 9109690
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - LevelUp
+        - NameChange
+        - OwnerUpdated
+        - Rebirth
+        - Transfer
+        - UnlabeledData
+        - UpdatedNameFee
+      abis:
+        - name: HopperNFT
+          file: ./abis/HopperNFT.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts

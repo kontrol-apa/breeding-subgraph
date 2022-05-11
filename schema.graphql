@@ -1,0 +1,7 @@
+type HopperInBreeding @entity {
+  id: ID! # hopperId
+  owner: Bytes
+  currentlyBreeding: Boolean
+  enteredOn:  Int
+  lastExit: Int
+}
